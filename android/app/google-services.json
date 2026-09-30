@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "430947118405",
+    "project_id": "linaty-c2e86",
+    "storage_bucket": "linaty-c2e86.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430947118405:android:368033514cbd50da1d222c",
+        "android_client_info": {
+          "package_name": "com.example.linaty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430947118405-8sek29kr3e5alugun771s2gi45ap4sn1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO9FCqfY4RvMqBSKh_Ixn36JlQDMRTbYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430947118405-8sek29kr3e5alugun771s2gi45ap4sn1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
