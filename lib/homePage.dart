@@ -3,15 +3,15 @@ import 'package:linaty/settings_screen.dart';
 import 'Detils_Litter.dart';
 import 'homePage.dart';
 
-// ============================================================
+// =============================
 // Linaty - الصفحة الرئيسية
-// ============================================================
+// ==============================
 // التعديلات الجديدة:
 // 1) تنسيق ألوان جميع البطاقات لتتناوب بالتساوي بين الألوان الثلاثة.
 // 2) تخفيف ارتفاع الشريط السفلي ليكون أنيقاً وغير مرتفع.
 // 3) إضافة ملاحظات باللغة العربية على جميع القياسات.
 // ============================================================
-
+//ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
 // ============================================================
 // قياسات التصميم (Design Dimensions & Measurements)
@@ -228,12 +228,12 @@ class HomeScreen extends StatelessWidget {
         child: FloatingActionButton(
           elevation: 2,
           backgroundColor: Colors.brown,//لون دائرة الهوم
-          shape: const CircleBorder(),
           child: const Icon(
             Icons.home_rounded,
             size: 26,
             color: Colors.white,
           ),
+          shape: const CircleBorder(),
           onPressed: () {
             // الانتقال للرئيسية
           },
