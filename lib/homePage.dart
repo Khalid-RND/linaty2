@@ -4,7 +4,7 @@ import 'Detils_Litter.dart';
 
 
 // =============================
-// Linaty - الصفحة الرئيسية
+// Linaty - صفحة الحرف فقط
 // ==============================
 // التعديلات الجديدة:
 // 1) تنسيق ألوان جميع البطاقات لتتناوب بالتساوي بين الألوان الثلاثة.
@@ -227,11 +227,11 @@ class HomeScreen extends StatelessWidget {
         height: fabSize,
         child: FloatingActionButton(
           elevation: 2,
-          backgroundColor: Colors.brown,//لون دائرة الهوم
+          backgroundColor: Color(0xFFF5E4C9),//لون دائرة الهوم
           child: const Icon(
             Icons.home_rounded,
             size: 26,
-            color: Colors.white,
+            color: Colors.black,
           ),
           shape: const CircleBorder(),
           onPressed: () {
@@ -245,7 +245,7 @@ class HomeScreen extends StatelessWidget {
       // الشريط السفلي الخفيف والمرتب (Compact Bottom Navigation Bar)
       // ============================================================
       bottomNavigationBar: BottomAppBar(
-        color: Colors.brown,
+        color: const Color(0xFFF5E4C9),
         elevation: 6,
         shape: const CircularNotchedRectangle(),
         notchMargin: 8.0, // تقليل التقعر ليناسب الحجم المنخفض
@@ -297,7 +297,8 @@ class HomeScreen extends StatelessWidget {
     required bool isSelected,
     required VoidCallback onTap,
   }) {
-    final Color color = isSelected ? orangeColor : const Color(0xFF66615B);
+    //]داله تغير اللوان الاعدادات والمشاركه
+    final Color color = isSelected ? orangeColor : const Color(0xFF000000);
 
     return InkWell(
       onTap: onTap,
