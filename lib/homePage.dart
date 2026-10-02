@@ -227,7 +227,7 @@ class HomeScreen extends StatelessWidget {
         height: fabSize,
         child: FloatingActionButton(
           elevation: 2,
-          backgroundColor: Color(0xFFFF6700),//لون دائرة الهوم
+          backgroundColor: Color(0xFFC14F01),//لون دائرة الهوم
           child: const Icon(
             Icons.home_rounded,
             size: 26,
@@ -245,7 +245,7 @@ class HomeScreen extends StatelessWidget {
       // الشريط السفلي الخفيف والمرتب (Compact Bottom Navigation Bar)
       // ============================================================
       bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFFFF6700),
+        color: const Color(0xFF29292F),
         elevation: 6,
         shape: const CircularNotchedRectangle(),
         notchMargin: 8.0, // تقليل التقعر ليناسب الحجم المنخفض
@@ -265,7 +265,7 @@ class HomeScreen extends StatelessWidget {
               ),
 
               // مسافة مخصصة للزر العائم في المنتصف
-              const SizedBox(width: 40),
+              const SizedBox(width: 60),
 
               // زر الإعدادات
               _navBarItem(
