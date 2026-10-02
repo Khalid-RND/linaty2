@@ -24,7 +24,7 @@ class LinatyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Linaty',
 
-      // jdsj أول صفحة تظهر حالياً هي صفحة تسجيل الدخول
+      // 999999 أول صفحة تظهر حالياً هي صفحة تسجيل الدخول
       home: const LoginScreen(),
     );
   }
