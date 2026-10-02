@@ -236,7 +236,7 @@ Password.dispose();
                                         // =========================================
 
                                         const Text(
-                                          'Create Account',
+                                          'انشاء حساب',
 
                                           textAlign: TextAlign.center,
 
@@ -268,7 +268,7 @@ Password.dispose();
                                         _buildTextField(
                                           controller: Email,
 
-                                          hintText: 'Email Address',
+                                          hintText: 'البريد الاكتروني',
 
                                           icon: Icons.mail_outline,
 
@@ -291,7 +291,7 @@ Password.dispose();
                                         _buildTextField(
                                           controller: User,
 
-                                          hintText: 'Username',
+                                          hintText: 'اسم المستخدم',
 
                                           icon: Icons.person_outline,
                                         ),
@@ -305,7 +305,7 @@ Password.dispose();
                                         _buildTextField(
                                           controller: _ageController,
 
-                                          hintText: 'Age',
+                                          hintText: 'العمر',
 
                                           icon: Icons.calendar_month_outlined,
 
@@ -322,7 +322,7 @@ Password.dispose();
                                         _buildTextField(
                                           controller: Password,
 
-                                          hintText: 'Password',
+                                          hintText: 'كلمه المرور',
 
                                           icon: Icons.lock_outline,
 
@@ -361,7 +361,7 @@ Password.dispose();
                                           controller:
                                           _confirmPasswordController,
 
-                                          hintText: 'Confirm Password',
+                                          hintText: 'تأكيد كلمة المرور',
 
                                           icon: Icons.lock_outline,
 
@@ -477,7 +477,7 @@ if(Email.text.isEmpty|| User.text.isEmpty||_ageController.text.isEmpty ||Passwor
                                             ),
 
                                             child: const Text(
-                                              'SIGN UP',
+                                              'تسجيل الحساب',
 
                                               style: TextStyle(
                                                 color: Colors.white,
@@ -513,7 +513,7 @@ if(Email.text.isEmpty|| User.text.isEmpty||_ageController.text.isEmpty ||Passwor
                                           children: [
 
                                             const Text(
-                                              'Already have an account? ',
+                                              ' هل لديك حساب بالفعل?',
 
                                               style: TextStyle(
                                                 color: greyColor,
@@ -536,7 +536,7 @@ if(Email.text.isEmpty|| User.text.isEmpty||_ageController.text.isEmpty ||Passwor
                                               },
 
                                               child: const Text(
-                                                'Log in',
+                                                'تسجيل الدخول',
 
                                                 style: TextStyle(
                                                   color: orangeColor,
