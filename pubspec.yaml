@@ -85,12 +85,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-fonts:
-  - family: Cairo
-    fonts:
-      - asset: fonts/NotoKufiArabic-Regular.ttf
-      - asset: fonts/Cairo-Black.ttf
-      - asset: fonts/Cairo.ttf
+  fonts:
+    - family: Cairo
+      fonts:
+        - asset: fonts/Cairo.ttf
+          weight: 400
+        - asset: fonts/Cairo-Bold.ttf
+          weight: 700
+        - asset: fonts/Cairo-Black.ttf
+          weight: 900
 
   #         style: italic
   #   - family: Trajan Pro
