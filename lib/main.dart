@@ -24,7 +24,7 @@ class LinatyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Linaty',
 
-      // حاسبة لينا خالد أول صفحة تظهر حالياً هي صفحة تسجيل الدخول
+      // حاسبة لينا خالد علي أول صفحة تظهر حالياً هي صفحة تسجيل الدخول
       home: const LoginScreen(),
     );
   }
