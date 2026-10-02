@@ -227,11 +227,11 @@ class HomeScreen extends StatelessWidget {
         height: fabSize,
         child: FloatingActionButton(
           elevation: 2,
-          backgroundColor: Color(0xFFF5E4C9),//لون دائرة الهوم
+          backgroundColor: Color(0xFFFF6700),//لون دائرة الهوم
           child: const Icon(
             Icons.home_rounded,
             size: 26,
-            color: Colors.black,
+            color: Colors.white,
           ),
           shape: const CircleBorder(),
           onPressed: () {
@@ -245,7 +245,7 @@ class HomeScreen extends StatelessWidget {
       // الشريط السفلي الخفيف والمرتب (Compact Bottom Navigation Bar)
       // ============================================================
       bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFFF5E4C9),
+        color: const Color(0xFFFF6700),
         elevation: 6,
         shape: const CircularNotchedRectangle(),
         notchMargin: 8.0, // تقليل التقعر ليناسب الحجم المنخفض
@@ -298,7 +298,7 @@ class HomeScreen extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     //]داله تغير اللوان الاعدادات والمشاركه
-    final Color color = isSelected ? orangeColor : const Color(0xFF000000);
+    final Color color = isSelected ? orangeColor : const Color(0xFFFFFFFF);
 
     return InkWell(
       onTap: onTap,
