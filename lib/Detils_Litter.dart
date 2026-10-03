@@ -112,6 +112,7 @@ word: 'Airplane',
 arabicPronunciation: 'إيربلين',
 meaning: 'طائرة',
 ),
+  
 ],
 
 activeDot: 0,
