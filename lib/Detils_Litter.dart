@@ -9,7 +9,7 @@ class LetterDetailScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       // ============================================================
-      // اتجاه التطبيق عربي
+      // اللغة والاتجاه
       // ============================================================
 
       locale: const Locale('ar', 'IQ'),
@@ -23,7 +23,7 @@ class LetterDetailScreen extends StatelessWidget {
 
       theme: ThemeData(
         fontFamily: 'Cairo',
-        scaffoldBackgroundColor: const Color(0xFFFEFBF5),
+        scaffoldBackgroundColor: const Color(0xFFFEF9F2),
       ),
 
       home: const LetterRulesPage(),
@@ -38,13 +38,45 @@ class LetterRulesPage extends StatelessWidget {
   // الألوان
   // ============================================================
 
-  static const Color background = Color(0xFFFEFBF5);
-  static const Color orange = Color(0xFFF4510B);
-  static const Color darkText = Color(0xFF29292F);
+  // خلفية الصفحة
+  static const Color background = Color(0xFFFEF9F2);
 
-  static const Color lightPeach = Color(0xFFFFEBDD);
-  static const Color cardColor = Color(0xFFFFFCF8);
-  static const Color borderColor = Color(0xFFE9E0D8);
+  // البرتقالي الأساسي
+  static const Color orange = Color(0xFFF4510B);
+
+  // النص
+  static const Color darkText = Color(0xFF291414);
+
+  // ============================================================
+  // 🟢 لون عنوان الصفحة
+  // ============================================================
+
+  static const Color headerPeach = Color(0xFFFFE8D8);
+
+  // ============================================================
+  // 🟢 لون عنوان القاعدة
+  // ============================================================
+
+  static const Color ruleTitlePeach = Color(0xFFFFE9DC);
+
+  // ============================================================
+  // 🔴 لون الخلفية الكبيرة للقاعدة
+  // ============================================================
+
+  static const Color ruleBackground = Color(0xFFFFFCF8);
+
+  // ============================================================
+  // لون بطاقات الكلمات
+  // ============================================================
+
+  static const Color cardColor = Color(0xFFFFFEFC);
+
+  static const Color borderColor = Color(0xFFE8DED4);
+
+  // ============================================================
+  // لون الملاحظة
+  // ============================================================
+
   static const Color noteColor = Color(0xFFFFE5D3);
 
   @override
@@ -58,7 +90,7 @@ class LetterRulesPage extends StatelessWidget {
             final width = constraints.maxWidth;
 
             // ==================================================
-            // أحجام متجاوبة مع الشاشات
+            // أحجام متجاوبة
             // ==================================================
 
             final horizontalPadding =
@@ -83,7 +115,9 @@ class LetterRulesPage extends StatelessWidget {
                 ),
 
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  crossAxisAlignment:
+                  CrossAxisAlignment.stretch,
+
                   children: [
 
                     // ==================================================
@@ -111,7 +145,9 @@ class LetterRulesPage extends StatelessWidget {
                       'يُلفظ الحرف A غالبًا بصوت طويل /eɪ/ كما في كلمة (A)،\n'
                           'وهو صوت مكون من حرفين: "أي".',
 
-                      sectionTitleFont: sectionTitleFont,
+                      sectionTitleFont:
+                      sectionTitleFont,
+
                       bodyFont: bodyFont,
 
                       cards: const [
@@ -135,6 +171,7 @@ class LetterRulesPage extends StatelessWidget {
                       ],
 
                       activeDot: 0,
+
                       width: width,
                     ),
 
@@ -153,7 +190,9 @@ class LetterRulesPage extends StatelessWidget {
                       'يُلفظ الحرف A أحيانًا بصوت قصير /æ/ كما في بعض الكلمات،\n'
                           'وهو صوت قريب من "أ" المفتوحة.',
 
-                      sectionTitleFont: sectionTitleFont,
+                      sectionTitleFont:
+                      sectionTitleFont,
+
                       bodyFont: bodyFont,
 
                       cards: const [
@@ -177,6 +216,7 @@ class LetterRulesPage extends StatelessWidget {
                       ],
 
                       activeDot: 1,
+
                       width: width,
                     ),
 
@@ -210,19 +250,17 @@ class LetterRulesPage extends StatelessWidget {
     (width * 0.075).clamp(48.0, 76.0);
 
     return SizedBox(
-      height: (width * 0.22).clamp(90.0, 180.0),
-
-      // ==========================================================
-      // نستخدم LTR هنا فقط للحفاظ على زر الرجوع في اليسار
-      // مثل الصورة الأصلية
-      // ==========================================================
+      height:
+      (width * 0.22).clamp(90.0, 180.0),
 
       child: Row(
+        // نحافظ على زر الرجوع في اليسار
         textDirection: TextDirection.ltr,
+
         children: [
 
           // ======================================================
-          // زر الرجوع - يسار
+          // زر الرجوع
           // ======================================================
 
           Container(
@@ -244,7 +282,10 @@ class LetterRulesPage extends StatelessWidget {
               icon: Icon(
                 Icons.chevron_left,
                 color: darkText,
-                size: (width * 0.060).clamp(34.0, 58.0),
+
+                size:
+                (width * 0.060)
+                    .clamp(34.0, 58.0),
               ),
             ),
           ),
@@ -264,33 +305,49 @@ class LetterRulesPage extends StatelessWidget {
               Text(
                 'A',
 
-                textDirection: TextDirection.ltr,
+                textDirection:
+                TextDirection.ltr,
 
                 style: TextStyle(
                   fontFamily: 'Cairo',
+
                   fontSize:
-                  (width * 0.135).clamp(65.0, 145.0),
-                  fontWeight: FontWeight.w900,
+                  (width * 0.135)
+                      .clamp(65.0, 145.0),
+
+                  fontWeight:
+                  FontWeight.w900,
+
                   color: orange,
+
                   height: 0.9,
                 ),
               ),
 
               SizedBox(
-                width: (width * 0.015).clamp(7.0, 18.0),
+                width:
+                (width * 0.015)
+                    .clamp(7.0, 18.0),
               ),
 
               Text(
                 'a',
 
-                textDirection: TextDirection.ltr,
+                textDirection:
+                TextDirection.ltr,
 
                 style: TextStyle(
                   fontFamily: 'Cairo',
+
                   fontSize:
-                  (width * 0.115).clamp(55.0, 125.0),
-                  fontWeight: FontWeight.w900,
+                  (width * 0.115)
+                      .clamp(55.0, 125.0),
+
+                  fontWeight:
+                  FontWeight.w900,
+
                   color: orange,
+
                   height: 0.9,
                 ),
               ),
@@ -298,7 +355,9 @@ class LetterRulesPage extends StatelessWidget {
           ),
 
           SizedBox(
-            width: (width * 0.035).clamp(14.0, 35.0),
+            width:
+            (width * 0.035)
+                .clamp(14.0, 35.0),
           ),
 
           // ======================================================
@@ -309,51 +368,69 @@ class LetterRulesPage extends StatelessWidget {
             width: 2,
 
             height:
-            (width * 0.135).clamp(70.0, 145.0),
+            (width * 0.135)
+                .clamp(70.0, 145.0),
 
             color: const Color(0xFFB44C2C),
           ),
 
           SizedBox(
-            width: (width * 0.035).clamp(14.0, 35.0),
+            width:
+            (width * 0.035)
+                .clamp(14.0, 35.0),
           ),
 
           // ======================================================
-          // عنوان الصفحة - عربي RTL
+          // 🟢 عنوان الصفحة
           // ======================================================
 
           Flexible(
             child: Container(
               padding: EdgeInsets.symmetric(
                 horizontal:
-                (width * 0.035).clamp(14.0, 35.0),
+                (width * 0.035)
+                    .clamp(14.0, 35.0),
 
                 vertical:
-                (width * 0.025).clamp(9.0, 25.0),
+                (width * 0.025)
+                    .clamp(9.0, 25.0),
               ),
 
               decoration: BoxDecoration(
-                color: lightPeach,
 
-                borderRadius: BorderRadius.circular(
-                  (width * 0.025).clamp(18.0, 30.0),
+                // 🟢 اللون الذي أشرت إليه
+                color: headerPeach,
+
+                borderRadius:
+                BorderRadius.circular(
+                  (width * 0.025)
+                      .clamp(18.0, 30.0),
                 ),
               ),
 
               child: Text(
                 'قواعد نطق الحرف',
 
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.center,
+                textDirection:
+                TextDirection.rtl,
+
+                textAlign:
+                TextAlign.center,
 
                 maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+
+                overflow:
+                TextOverflow.ellipsis,
 
                 style: TextStyle(
                   fontFamily: 'Cairo',
+
                   color: darkText,
+
                   fontSize: titleFont,
-                  fontWeight: FontWeight.w800,
+
+                  fontWeight:
+                  FontWeight.w800,
                 ),
               ),
             ),
@@ -364,7 +441,7 @@ class LetterRulesPage extends StatelessWidget {
   }
 
   // ============================================================
-  // بطاقة القاعدة كاملة
+  // 🔴 بطاقة القاعدة الكبيرة
   // ============================================================
 
   Widget _buildRuleSection({
@@ -381,144 +458,221 @@ class LetterRulesPage extends StatelessWidget {
     return Container(
       width: double.infinity,
 
-      padding: EdgeInsets.fromLTRB(
-        (width * 0.025).clamp(14.0, 26.0),
-        (width * 0.018).clamp(13.0, 20.0),
-        (width * 0.025).clamp(14.0, 26.0),
-        (width * 0.020).clamp(14.0, 22.0),
-      ),
+      // ==========================================================
+      // 🔴 الخلفية الكبيرة للقاعدة
+      // ==========================================================
 
       decoration: BoxDecoration(
-        color: const Color(0xFFFFFEFC),
-        borderRadius: BorderRadius.circular(22),
+        color: ruleBackground,
+
+        borderRadius:
+        BorderRadius.circular(24),
+      ),
+
+      padding: EdgeInsets.fromLTRB(
+        (width * 0.025)
+            .clamp(14.0, 26.0),
+
+        (width * 0.018)
+            .clamp(13.0, 20.0),
+
+        (width * 0.025)
+            .clamp(14.0, 26.0),
+
+        (width * 0.020)
+            .clamp(14.0, 22.0),
       ),
 
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        crossAxisAlignment:
+        CrossAxisAlignment.stretch,
 
         children: [
 
           // ======================================================
-          // عنوان القاعدة
+          // 🟢 عنوان القاعدة
           // ======================================================
 
-          Row(
-            textDirection: TextDirection.rtl,
+          Align(
+            alignment:
+            Alignment.centerRight,
 
-            mainAxisAlignment: MainAxisAlignment.start,
+            child: Container(
 
-            crossAxisAlignment:
-            CrossAxisAlignment.center,
+              padding:
+              EdgeInsets.symmetric(
+                horizontal:
+                (width * 0.025)
+                    .clamp(13.0, 25.0),
 
-            children: [
-
-              // رقم القاعدة
-
-              Text(
-                '$number.',
-
-                textDirection: TextDirection.rtl,
-
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  color: darkText,
-                  fontSize: sectionTitleFont,
-                  fontWeight: FontWeight.w900,
-                ),
+                vertical:
+                (width * 0.012)
+                    .clamp(8.0, 14.0),
               ),
 
-              const SizedBox(width: 8),
+              decoration:
+              BoxDecoration(
 
-              // كلمة النطق
+                // 🟢 اللون الخوخي
+                color: ruleTitlePeach,
 
-              Text(
-                title,
-
-                textDirection: TextDirection.rtl,
-
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  color: darkText,
-                  fontSize: sectionTitleFont,
-                  fontWeight: FontWeight.w900,
-                ),
+                borderRadius:
+                BorderRadius.circular(22),
               ),
 
-              SizedBox(
-                width:
-                (width * 0.018).clamp(8.0, 18.0),
+              child: Row(
+                textDirection:
+                TextDirection.rtl,
+
+                mainAxisSize:
+                MainAxisSize.min,
+
+                children: [
+
+                  // ==================================================
+                  // الرقم
+                  // ==================================================
+
+                  Text(
+                    '$number.',
+
+                    textDirection:
+                    TextDirection.rtl,
+
+                    style: TextStyle(
+                      fontFamily: 'Cairo',
+
+                      color: darkText,
+
+                      fontSize:
+                      sectionTitleFont,
+
+                      fontWeight:
+                      FontWeight.w900,
+                    ),
+                  ),
+
+                  const SizedBox(width: 8),
+
+                  // ==================================================
+                  // كلمة النطق
+                  // ==================================================
+
+                  Text(
+                    title,
+
+                    textDirection:
+                    TextDirection.rtl,
+
+                    style: TextStyle(
+                      fontFamily: 'Cairo',
+
+                      color: darkText,
+
+                      fontSize:
+                      sectionTitleFont,
+
+                      fontWeight:
+                      FontWeight.w900,
+                    ),
+                  ),
+
+                  SizedBox(
+                    width:
+                    (width * 0.018)
+                        .clamp(8.0, 18.0),
+                  ),
+
+                  // ==================================================
+                  // زر الصوت
+                  // ==================================================
+
+                  Container(
+                    width:
+                    (width * 0.055)
+                        .clamp(42.0, 58.0),
+
+                    height:
+                    (width * 0.055)
+                        .clamp(42.0, 58.0),
+
+                    decoration:
+                    const BoxDecoration(
+                      color: orange,
+                      shape: BoxShape.circle,
+                    ),
+
+                    child: Icon(
+                      Icons.volume_up_rounded,
+
+                      color: Colors.white,
+
+                      size:
+                      (width * 0.035)
+                          .clamp(24.0, 36.0),
+                    ),
+                  ),
+
+                  SizedBox(
+                    width:
+                    (width * 0.018)
+                        .clamp(8.0, 18.0),
+                  ),
+
+                  // ==================================================
+                  // النطق الإنجليزي
+                  // ==================================================
+
+                  Text(
+                    pronunciation,
+
+                    textDirection:
+                    TextDirection.ltr,
+
+                    style: TextStyle(
+                      fontFamily: 'Cairo',
+
+                      color: darkText,
+
+                      fontSize:
+                      sectionTitleFont *
+                          0.95,
+
+                      fontWeight:
+                      FontWeight.w800,
+                    ),
+                  ),
+                ],
               ),
-
-              // ==================================================
-              // زر الصوت
-              // ==================================================
-
-              Container(
-                width:
-                (width * 0.055).clamp(42.0, 58.0),
-
-                height:
-                (width * 0.055).clamp(42.0, 58.0),
-
-                decoration: const BoxDecoration(
-                  color: orange,
-                  shape: BoxShape.circle,
-                ),
-
-                child: Icon(
-                  Icons.volume_up_rounded,
-
-                  color: Colors.white,
-
-                  size:
-                  (width * 0.035).clamp(24.0, 36.0),
-                ),
-              ),
-
-              SizedBox(
-                width:
-                (width * 0.018).clamp(8.0, 18.0),
-              ),
-
-              // ==================================================
-              // النطق الإنجليزي
-              // ==================================================
-
-              Text(
-                pronunciation,
-
-                textDirection: TextDirection.ltr,
-
-                style: TextStyle(
-                  fontFamily: 'Cairo',
-                  color: darkText,
-                  fontSize:
-                  sectionTitleFont * 0.95,
-                  fontWeight: FontWeight.w800,
-                ),
-              ),
-            ],
+            ),
           ),
 
-          const SizedBox(height: 12),
+          const SizedBox(height: 13),
 
           // ======================================================
-          // الشرح العربي
+          // الشرح
           // ======================================================
 
           Text(
             description,
 
-            textDirection: TextDirection.rtl,
+            textDirection:
+            TextDirection.rtl,
 
-            textAlign: TextAlign.right,
+            textAlign:
+            TextAlign.right,
 
             style: TextStyle(
               fontFamily: 'Cairo',
+
               color: darkText,
+
               fontSize: bodyFont,
+
               height: 1.65,
-              fontWeight: FontWeight.w500,
+
+              fontWeight:
+              FontWeight.w500,
             ),
           ),
 
@@ -529,18 +683,26 @@ class LetterRulesPage extends StatelessWidget {
           // ======================================================
 
           Align(
-            alignment: Alignment.centerRight,
+            alignment:
+            Alignment.centerRight,
 
             child: Text(
               'أمثلة:',
 
-              textDirection: TextDirection.rtl,
+              textDirection:
+              TextDirection.rtl,
 
               style: TextStyle(
                 fontFamily: 'Cairo',
-                color: const Color(0xFF9C4D20),
-                fontSize: bodyFont * 1.12,
-                fontWeight: FontWeight.w900,
+
+                color:
+                const Color(0xFF9C4D20),
+
+                fontSize:
+                bodyFont * 1.12,
+
+                fontWeight:
+                FontWeight.w900,
               ),
             ),
           ),
@@ -563,28 +725,37 @@ class LetterRulesPage extends StatelessWidget {
           // ======================================================
 
           Row(
-            textDirection: TextDirection.ltr,
+            textDirection:
+            TextDirection.ltr,
 
             mainAxisAlignment:
             MainAxisAlignment.center,
 
-            children: List.generate(
+            children:
+            List.generate(
               3,
                   (index) {
                 return Container(
-                  margin: const EdgeInsets.symmetric(
+                  margin:
+                  const EdgeInsets
+                      .symmetric(
                     horizontal: 5,
                   ),
 
                   width: 9,
                   height: 9,
 
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
+                  decoration:
+                  BoxDecoration(
+                    shape:
+                    BoxShape.circle,
 
-                    color: index == activeDot
+                    color:
+                    index == activeDot
                         ? orange
-                        : const Color(0xFFD8C9A5),
+                        : const Color(
+                      0xFFD8C9A5,
+                    ),
                   ),
                 );
               },
@@ -604,40 +775,52 @@ class LetterRulesPage extends StatelessWidget {
       double width,
       ) {
     final cardWidth =
-    (width * 0.30).clamp(245.0, 310.0);
+    (width * 0.30)
+        .clamp(245.0, 310.0);
 
     return SizedBox(
       width: double.infinity,
 
       height:
-      (width * 0.205).clamp(145.0, 180.0),
+      (width * 0.205)
+          .clamp(145.0, 180.0),
 
       child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
+        scrollDirection:
+        Axis.horizontal,
 
         physics:
         const BouncingScrollPhysics(),
 
         child: Row(
-          // الكلمات الإنجليزية تبقى LTR
-          textDirection: TextDirection.ltr,
+          // الإنجليزية LTR
+          textDirection:
+          TextDirection.ltr,
 
           crossAxisAlignment:
           CrossAxisAlignment.start,
 
           children: [
 
-            for (int i = 0; i < cards.length; i++) ...[
+            for (
+            int i = 0;
+            i < cards.length;
+            i++
+            ) ...[
+
               _buildWordCard(
                 cards[i],
                 cardWidth,
                 width,
               ),
 
-              if (i != cards.length - 1)
+              if (
+              i != cards.length - 1
+              )
                 SizedBox(
                   width:
-                  (width * 0.008).clamp(7.0, 10.0),
+                  (width * 0.008)
+                      .clamp(7.0, 10.0),
                 ),
             ],
           ],
@@ -656,30 +839,38 @@ class LetterRulesPage extends StatelessWidget {
       double width,
       ) {
     final wordFont =
-    (width * 0.024).clamp(22.0, 27.0);
+    (width * 0.024)
+        .clamp(22.0, 27.0);
 
     final arabicFont =
-    (width * 0.0205).clamp(19.0, 23.0);
+    (width * 0.0205)
+        .clamp(19.0, 23.0);
 
     final speakerSize =
-    (width * 0.028).clamp(28.0, 32.0);
+    (width * 0.028)
+        .clamp(28.0, 32.0);
 
     return SizedBox(
       width: cardWidth,
 
       height:
-      (width * 0.185).clamp(135.0, 165.0),
+      (width * 0.185)
+          .clamp(135.0, 165.0),
 
       child: Container(
-        padding: EdgeInsets.symmetric(
+        padding:
+        EdgeInsets.symmetric(
           horizontal:
-          (width * 0.010).clamp(7.0, 11.0),
+          (width * 0.010)
+              .clamp(7.0, 11.0),
 
           vertical:
-          (width * 0.010).clamp(8.0, 12.0),
+          (width * 0.010)
+              .clamp(8.0, 12.0),
         ),
 
-        decoration: BoxDecoration(
+        decoration:
+        BoxDecoration(
           color: cardColor,
 
           borderRadius:
@@ -692,9 +883,6 @@ class LetterRulesPage extends StatelessWidget {
         ),
 
         child: Column(
-          mainAxisAlignment:
-          MainAxisAlignment.start,
-
           children: [
 
             // ==================================================
@@ -705,9 +893,11 @@ class LetterRulesPage extends StatelessWidget {
               flex: 4,
 
               child: Row(
-                textDirection: TextDirection.ltr,
+                textDirection:
+                TextDirection.ltr,
 
-                mainAxisSize: MainAxisSize.min,
+                mainAxisSize:
+                MainAxisSize.min,
 
                 mainAxisAlignment:
                 MainAxisAlignment.center,
@@ -719,7 +909,8 @@ class LetterRulesPage extends StatelessWidget {
 
                   Flexible(
                     child: FittedBox(
-                      fit: BoxFit.scaleDown,
+                      fit:
+                      BoxFit.scaleDown,
 
                       child: RichText(
                         textDirection:
@@ -744,8 +935,11 @@ class LetterRulesPage extends StatelessWidget {
                   // السماعة
 
                   Container(
-                    width: speakerSize,
-                    height: speakerSize,
+                    width:
+                    speakerSize,
+
+                    height:
+                    speakerSize,
 
                     decoration:
                     const BoxDecoration(
@@ -756,10 +950,12 @@ class LetterRulesPage extends StatelessWidget {
                     child: Icon(
                       Icons.volume_up_rounded,
 
-                      color: Colors.white,
+                      color:
+                      Colors.white,
 
                       size:
-                      speakerSize * 0.64,
+                      speakerSize *
+                          0.64,
                     ),
                   ),
                 ],
@@ -774,7 +970,8 @@ class LetterRulesPage extends StatelessWidget {
               flex: 3,
 
               child: FittedBox(
-                fit: BoxFit.scaleDown,
+                fit:
+                BoxFit.scaleDown,
 
                 child: Text(
                   data.arabicPronunciation,
@@ -786,10 +983,17 @@ class LetterRulesPage extends StatelessWidget {
                   TextAlign.center,
 
                   style: TextStyle(
-                    fontFamily: 'Cairo',
-                    color: Colors.black,
-                    fontSize: arabicFont,
-                    fontWeight: FontWeight.w500,
+                    fontFamily:
+                    'Cairo',
+
+                    color:
+                    Colors.black,
+
+                    fontSize:
+                    arabicFont,
+
+                    fontWeight:
+                    FontWeight.w500,
                   ),
                 ),
               ),
@@ -803,7 +1007,8 @@ class LetterRulesPage extends StatelessWidget {
               flex: 3,
 
               child: FittedBox(
-                fit: BoxFit.scaleDown,
+                fit:
+                BoxFit.scaleDown,
 
                 child: Text(
                   data.meaning,
@@ -815,10 +1020,17 @@ class LetterRulesPage extends StatelessWidget {
                   TextAlign.center,
 
                   style: TextStyle(
-                    fontFamily: 'Cairo',
-                    color: Colors.black,
-                    fontSize: arabicFont,
-                    fontWeight: FontWeight.w500,
+                    fontFamily:
+                    'Cairo',
+
+                    color:
+                    Colors.black,
+
+                    fontSize:
+                    arabicFont,
+
+                    fontWeight:
+                    FontWeight.w500,
                   ),
                 ),
               ),
@@ -837,9 +1049,14 @@ class LetterRulesPage extends StatelessWidget {
       String word,
       double fontSize,
       ) {
-    final spans = <TextSpan>[];
+    final spans =
+    <TextSpan>[];
 
-    for (int i = 0; i < word.length; i++) {
+    for (
+    int i = 0;
+    i < word.length;
+    i++
+    ) {
       final char = word[i];
 
       spans.add(
@@ -847,14 +1064,16 @@ class LetterRulesPage extends StatelessWidget {
           text: char,
 
           style: TextStyle(
-            fontFamily: 'Cairo',
+            fontFamily:
+            'Cairo',
 
             color:
             char.toLowerCase() == 'a'
                 ? orange
                 : darkText,
 
-            fontSize: fontSize,
+            fontSize:
+            fontSize,
 
             fontWeight:
             FontWeight.w800,
@@ -874,20 +1093,25 @@ class LetterRulesPage extends StatelessWidget {
       double width,
       ) {
     final iconSize =
-    (width * 0.075).clamp(52.0, 75.0);
+    (width * 0.075)
+        .clamp(52.0, 75.0);
 
     return Container(
       width: double.infinity,
 
-      padding: EdgeInsets.symmetric(
+      padding:
+      EdgeInsets.symmetric(
         horizontal:
-        (width * 0.035).clamp(14.0, 28.0),
+        (width * 0.035)
+            .clamp(14.0, 28.0),
 
         vertical:
-        (width * 0.025).clamp(13.0, 22.0),
+        (width * 0.025)
+            .clamp(13.0, 22.0),
       ),
 
-      decoration: BoxDecoration(
+      decoration:
+      BoxDecoration(
         color: noteColor,
 
         borderRadius:
@@ -895,8 +1119,8 @@ class LetterRulesPage extends StatelessWidget {
       ),
 
       child: Row(
-        // عربي RTL
-        textDirection: TextDirection.rtl,
+        textDirection:
+        TextDirection.rtl,
 
         crossAxisAlignment:
         CrossAxisAlignment.center,
@@ -904,7 +1128,7 @@ class LetterRulesPage extends StatelessWidget {
         children: [
 
           // ======================================================
-          // أيقونة المصباح
+          // المصباح
           // ======================================================
 
           Container(
@@ -920,9 +1144,11 @@ class LetterRulesPage extends StatelessWidget {
             child: Icon(
               Icons.lightbulb_outline_rounded,
 
-              color: Colors.white,
+              color:
+              Colors.white,
 
-              size: iconSize * 0.58,
+              size:
+              iconSize * 0.58,
             ),
           ),
 
@@ -944,15 +1170,23 @@ class LetterRulesPage extends StatelessWidget {
                 children: [
 
                   TextSpan(
-                    text: 'ملاحظة: ',
+                    text:
+                    'ملاحظة: ',
 
-                    style: TextStyle(
-                      fontFamily: 'Cairo',
-                      color: darkText,
+                    style:
+                    TextStyle(
+                      fontFamily:
+                      'Cairo',
+
+                      color:
+                      darkText,
 
                       fontSize:
                       (width * 0.039)
-                          .clamp(19.0, 40.0),
+                          .clamp(
+                        19.0,
+                        40.0,
+                      ),
 
                       fontWeight:
                       FontWeight.w900,
@@ -964,15 +1198,23 @@ class LetterRulesPage extends StatelessWidget {
                     'قد يختلف نطق الحرف A حسب الكلمة والموقع فيها،\n'
                         'لذلك من المهم الاستماع إلى الأمثلة والتدريب عليها.',
 
-                    style: TextStyle(
-                      fontFamily: 'Cairo',
-                      color: darkText,
+                    style:
+                    TextStyle(
+                      fontFamily:
+                      'Cairo',
+
+                      color:
+                      darkText,
 
                       fontSize:
                       (width * 0.032)
-                          .clamp(15.0, 32.0),
+                          .clamp(
+                        15.0,
+                        32.0,
+                      ),
 
-                      height: 1.55,
+                      height:
+                      1.55,
 
                       fontWeight:
                       FontWeight.w500,
