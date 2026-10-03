@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class LetterDetailScreen extends StatelessWidget {
@@ -41,6 +42,7 @@ static const Color noteColor = Color(0xFFFFE5D3);
 Widget build(BuildContext context) {
 return Directionality(
 textDirection: TextDirection.rtl,
+
 child: Scaffold(
 backgroundColor: background,
 
@@ -498,6 +500,9 @@ const SizedBox(height: 10),
 
 // ======================================================
 // بطاقات الكلمات
+//
+// نفس الدالة تستخدم للنطق 1 والنطق 2
+// وبالتالي نفس الارتفاع ونفس السكرول الأفقي.
 // ======================================================
 
 _buildHorizontalWordCards(cards),
@@ -541,16 +546,27 @@ color: index == activeDot
 // ============================================================
 // السكرول الأفقي للكلمات
 //
-// تم إصلاح مشكلة BOTTOM OVERFLOWED
+// مهم:
+// هذا الجزء يستخدم في النطق 1 والنطق 2.
+//
+// لا يوجد Wrap.
+// لا يوجد Expanded.
+// لا يوجد GridView.
+//
+// جميع البطاقات تبقى في صف واحد.
 // ============================================================
 
 Widget _buildHorizontalWordCards(
 List<WordCardData> cards,
 ) {
 return SizedBox(
-// كان 125 ويسبب Overflow.
-// تم رفع الارتفاع حتى تستوعب البطاقة
-// الكلمة + النطق + المعنى بدون قص.
+width: double.infinity,
+
+// ========================================================
+// تم زيادة الارتفاع حتى لا يحدث Overflow
+// مع النص العربي والكلمات الطويلة.
+// ========================================================
+
 height: 155,
 
 child: SingleChildScrollView(
@@ -847,3 +863,4 @@ required this.arabicPronunciation,
 required this.meaning,
 });
 }
+
