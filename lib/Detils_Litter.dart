@@ -151,6 +151,16 @@ word: 'Map',
 arabicPronunciation: 'ماب',
 meaning: 'خريطة',
 ),
+  WordCardData(
+    word: 'Map',
+    arabicPronunciation: 'ماب',
+    meaning: 'خريطة',
+  ),
+  WordCardData(
+    word: 'Map',
+    arabicPronunciation: 'ماب',
+    meaning: 'خريطة',
+  ),
 ],
 
 activeDot: 1,
