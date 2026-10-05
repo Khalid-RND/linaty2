@@ -4,13 +4,9 @@ import 'Detils_Litter.dart';
 
 
 // =============================
-// Linaty - صفحة الحرف فقط
+// Linaty - صفحة الحروف فقط
 // ==============================
-// التعديلات الجديدة:
-// 1) تنسيق ألوان جميع البطاقات لتتناوب بالتساوي بين الألوان الثلاثة.
-// 2) تخفيف ارتفاع الشريط السفلي ليكون أنيقاً وغير مرتفع.
-// 3) إضافة ملاحظات باللغة العربية على جميع القياسات.
-// ============================================================
+
 //ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
 // ============================================================
@@ -227,7 +223,7 @@ class HomeScreen extends StatelessWidget {
         height: fabSize,
         child: FloatingActionButton(
           elevation: 2,
-          backgroundColor: Color(0xFFC14F01),//لون دائرة الهوم
+          backgroundColor: Color(0xFF29292F),//لون دائرة الهوم
           child: const Icon(
             Icons.home_rounded,
             size: 26,

@@ -417,7 +417,7 @@ Password.dispose();
                                             onPressed: () async {
 if(Email.text.isEmpty|| User.text.isEmpty||_ageController.text.isEmpty ||Password.text.isEmpty ||_confirmPasswordController.text.isEmpty) {
 
-  Fluttertoast.showToast(msg: "Please Enter all filed",toastLength: Toast.LENGTH_LONG,backgroundColor: Colors.red,textColor: Colors.black,gravity: ToastGravity.CENTER);
+  Fluttertoast.showToast(msg: "يرجى تعبئة جميع الحقول.",toastLength: Toast.LENGTH_LONG,backgroundColor: Colors.red,textColor: Colors.black,gravity: ToastGravity.CENTER);
 }else{
   try {
     UserCredential kha = await FirebaseAuth.instance
