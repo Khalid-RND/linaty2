@@ -7,7 +7,7 @@ import 'Detils_Litter.dart';
 // Linaty - صفحة الحروف فقط
 // ==============================
 
-//ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+//oooooooooooooooooooooooooooooooooiiiiiiiiiioooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
 // ============================================================
 // قياسات التصميم (Design Dimensions & Measurements)
@@ -386,7 +386,7 @@ class HomeScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const LetterDetailScreen(),
+                builder: (context) => LetterDetailScreen(letterId: letter,),
               ),
             );
           },
