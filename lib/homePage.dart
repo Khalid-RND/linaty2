@@ -103,8 +103,16 @@ const Color lightBoxColor = Color(0xFFF5E4C9);
 // الصفحة الرئيسية (Home Screen Widget)
 // ============================================================
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  // متغير لتخزين آخر حرف تم الضغط عليه
+  String? selectedLetter;
 
   // قائمة الأحرف المفردة (26)
   static const List<String> singleLetters = [
@@ -223,7 +231,7 @@ class HomeScreen extends StatelessWidget {
         height: fabSize,
         child: FloatingActionButton(
           elevation: 2,
-          backgroundColor: Color(0xFF29292F),//لون دائرة الهوم
+          backgroundColor: const Color(0xFF29292F), //لون دائرة الهوم
           child: const Icon(
             Icons.home_rounded,
             size: 26,
@@ -287,7 +295,7 @@ class HomeScreen extends StatelessWidget {
   // ==========================================================
   // ودجت تبويب الشريط السفلي (Compact Nav Item)
   // ==========================================================
-  static Widget _navBarItem({
+  Widget _navBarItem({
     required IconData icon,
     required String label,
     required bool isSelected,
@@ -328,7 +336,7 @@ class HomeScreen extends StatelessWidget {
   // ==========================================================
   // عنوان كل قسم (Section Title)
   // ==========================================================
-  static Widget _sectionTitle(String title) {
+  Widget _sectionTitle(String title) {
     return Row(
       children: [
         const Expanded(
@@ -363,7 +371,7 @@ class HomeScreen extends StatelessWidget {
   // ==========================================================
   // شبكة المربعات (Letter Grid)
   // ==========================================================
-  static Widget _letterGrid(
+  Widget _letterGrid(
       BuildContext context,
       List<String> letters,
       double fontSize,
@@ -380,9 +388,13 @@ class HomeScreen extends StatelessWidget {
       itemCount: letters.length,
       itemBuilder: (context, index) {
         final String letter = letters[index];
+        final bool isSelected = selectedLetter == letter;
 
         return GestureDetector(
           onTap: () {
+            setState(() {
+              selectedLetter = letter; // تحديث الحرف الأخير الذي تم ضغطه
+            });
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -395,8 +407,18 @@ class HomeScreen extends StatelessWidget {
             decoration: BoxDecoration(
               color: _boxColor(index), // الألوان تناوبية الآن بين الألوان الثلاثة
               borderRadius: BorderRadius.circular(letterBoxRadius),
-              boxShadow: const [
-                BoxShadow(
+              border: Border.all(
+                color: isSelected ? Colors.red : Colors.transparent,
+                width: 3,
+              ),
+              boxShadow: [
+                if (isSelected)
+                  BoxShadow(
+                    color: Colors.red.withOpacity(0.8),
+                    blurRadius: 10,
+                    spreadRadius: 2,
+                  ),
+                const BoxShadow(
                   color: Color(0x12000000),
                   blurRadius: 4,
                   offset: Offset(0, 2),
@@ -420,7 +442,7 @@ class HomeScreen extends StatelessWidget {
   // ==========================================================
   // توزيع الألوان الثلاثة بالتناوب المتناسق على المربعات
   // ==========================================================
-  static Color _boxColor(int index) {
+  Color _boxColor(int index) {
     // التناوب الدوري: 0 = بيج، 1 = برتقالي، 2 = داكن
     switch (index % 3) {
       case 0:
@@ -437,7 +459,7 @@ class HomeScreen extends StatelessWidget {
   // ==========================================================
   // لون النص داخل المربع حسب لون الخلفية لتوضيح الخط
   // ==========================================================
-  static Color _textColor(int index) {
+  Color _textColor(int index) {
     final Color boxColor = _boxColor(index);
 
     if (boxColor == orangeColor || boxColor == darkColor) {
