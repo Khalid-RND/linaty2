@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
@@ -25,10 +26,20 @@ class _LoginScreenState extends State<LoginScreen> {
   // إظهار / إخفاء كلمة المرور
   bool showPassword = false;
 
+  // الاحتفاظ ببيانات البريد وكلمة المرور عند إعادة بناء الصفحة
+  final TextEditingController email = TextEditingController();
+  final TextEditingController Password = TextEditingController();
+
+  // التخلص من وحدات التحكم عند إغلاق الصفحة
+  @override
+  void dispose() {
+    email.dispose();
+    Password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController email = TextEditingController();
-    TextEditingController Password = TextEditingController();
     final size = MediaQuery.of(context).size;
 
     final double width = size.width;
@@ -163,11 +174,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                   style: TextStyle(
                                     fontSize: width * 0.062,
 
-                                    fontWeight:
-                                    FontWeight.w600,
+                                    fontWeight: FontWeight.w600,
 
-                                    color:
-                                    const Color(0xFF653719),
+                                    color: const Color(0xFF653719),
                                   ),
                                 ),
 
@@ -186,12 +195,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                     hintText: "البريد الاكتروني",
 
                                     prefixIcon: const Icon(Icons.email_outlined),
+
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
+
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),
-                                      borderSide: const BorderSide(color: orangeColor, width: 2.0),
+                                      borderSide: const BorderSide(
+                                        color: orangeColor,
+                                        width: 2.0,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -207,28 +221,36 @@ class _LoginScreenState extends State<LoginScreen> {
                                 TextField(
                                   controller: Password,
                                   obscureText: !showPassword,
+
                                   decoration: InputDecoration(
                                     hintText: "كلمة المرور",
 
                                     prefixIcon: const Icon(Icons.lock_outline),
+
                                     suffixIcon: IconButton(
                                       icon: Icon(
                                         showPassword
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
                                       ),
+
                                       onPressed: () {
                                         setState(() {
                                           showPassword = !showPassword;
                                         });
                                       },
                                     ),
+
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
+
                                     focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(30),
-                                      borderSide: const BorderSide(color: orangeColor, width: 2.0),
+                                      borderSide: const BorderSide(
+                                        color: orangeColor,
+                                        width: 2.0,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -247,57 +269,78 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: height * 0.062,
 
                                   child: ElevatedButton(
-                                    onPressed: ()  async {
+                                    onPressed: () async {
 
-                                      showDialog(context: context,barrierDismissible: false, builder: (context) => const Center(child: CircularProgressIndicator()));
+                                      showDialog(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        builder: (context) => const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                      );
 
                                       try {
-                                        UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                        UserCredential userCredential =
+                                        await FirebaseAuth.instance
+                                            .signInWithEmailAndPassword(
                                           email: email.text.trim(),
                                           password: Password.text.trim(),
                                         );
-                                        Navigator.of(context, rootNavigator: true).pop();
+
+                                        Navigator.of(
+                                          context,
+                                          rootNavigator: true,
+                                        ).pop();
+
                                         Navigator.pushReplacement(
                                           context,
-                                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                                          MaterialPageRoute(
+                                            builder: (context) => HomeScreen(),
+                                          ),
                                         );
 
                                         if (userCredential.user!.emailVerified) {
                                           // اذا نجح تسجيل الدخول
 
-                                        }else{
+                                        } else {
 
-                                          Fluttertoast.showToast(msg: "الحساب غير مفعل",toastLength: Toast.LENGTH_LONG,backgroundColor: Colors.red,gravity: ToastGravity.CENTER ,textColor: Colors.white,fontSize: 18.0);}
-                                      }
-                                      on FirebaseAuthException catch (e) {
-                                        print(e.message);
-
-                                        Navigator.of(context, rootNavigator: true).pop();
-                                        Fluttertoast.showToast(
-                                            msg: "خطأ في الابريد او كلمة المرور",
+                                          Fluttertoast.showToast(
+                                            msg: "الحساب غير مفعل",
                                             toastLength: Toast.LENGTH_LONG,
                                             backgroundColor: Colors.red,
                                             gravity: ToastGravity.CENTER,
-                                            textColor: Colors.black,
-                                            fontSize: 18.0);
-                                      }
+                                            textColor: Colors.white,
+                                            fontSize: 18.0,
+                                          );
+                                        }
+                                      } on FirebaseAuthException catch (e) {
+                                        print(e.message);
 
+                                        Navigator.of(
+                                          context,
+                                          rootNavigator: true,
+                                        ).pop();
+
+                                        Fluttertoast.showToast(
+                                          msg: "خطأ في الابريد او كلمة المرور",
+                                          toastLength: Toast.LENGTH_LONG,
+                                          backgroundColor: Colors.red,
+                                          gravity: ToastGravity.CENTER,
+                                          textColor: Colors.black,
+                                          fontSize: 18.0,
+                                        );
+                                      }
                                     },
 
-                                    style:
-                                    ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                      orangeColor,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: orangeColor,
 
-                                      foregroundColor:
-                                      Colors.white,
+                                      foregroundColor: Colors.white,
 
                                       elevation: 0,
 
-                                      shape:
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
                                           35,
                                         ),
                                       ),
@@ -307,11 +350,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       'تسجيل الدخول',
 
                                       style: TextStyle(
-                                        fontSize:
-                                        width * 0.045,
+                                        fontSize: width * 0.045,
 
-                                        fontWeight:
-                                        FontWeight.bold,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
@@ -327,25 +368,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: height * 0.062,
 
                                   child: ElevatedButton(
-                                    onPressed: () {Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => const SignUpScreen()),
-                                    );},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          const SignUpScreen(),
+                                        ),
+                                      );
+                                    },
 
-                                    style:
-                                    ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                      const Color(0xFF653719),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xFF653719),
 
-                                      foregroundColor:
-                                      Colors.white,
+                                      foregroundColor: Colors.white,
 
                                       elevation: 0,
 
-                                      shape:
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
                                           35,
                                         ),
                                       ),
@@ -355,11 +396,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       'انشاء حساب',
 
                                       style: TextStyle(
-                                        fontSize:
-                                        width * 0.045,
+                                        fontSize: width * 0.045,
 
-                                        fontWeight:
-                                        FontWeight.bold,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                   ),
@@ -374,23 +413,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // ==========================================
 
                                 TextButton(
-                                  onPressed: () {Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const ResetPasswordScreen()),
-                                  );},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                        const ResetPasswordScreen(),
+                                      ),
+                                    );
+                                  },
 
                                   child: Text(
                                     'هل نسيت كلمة المرور?',
 
                                     style: TextStyle(
-                                      color:
-                                      orangeColor,
+                                      color: orangeColor,
 
-                                      fontSize:
-                                      width * 0.042,
+                                      fontSize: width * 0.042,
 
-                                      fontWeight:
-                                      FontWeight.w500,
+                                      fontWeight: FontWeight.w500,
                                     ),
                                   ),
                                 ),
@@ -409,17 +450,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Expanded(
                                       child: Container(
                                         height: 1,
-                                        color:
-                                        const Color(
-                                          0xFFD7D0C9,
-                                        ),
+                                        color: const Color(0xFFD7D0C9),
                                       ),
                                     ),
 
                                     Padding(
-                                      padding:
-                                      const EdgeInsets
-                                          .symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                         horizontal: 14,
                                       ),
 
@@ -427,11 +463,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                         'or',
 
                                         style: TextStyle(
-                                          color:
-                                          Colors.grey[700],
+                                          color: Colors.grey[700],
 
-                                          fontSize:
-                                          width * 0.04,
+                                          fontSize: width * 0.04,
                                         ),
                                       ),
                                     ),
@@ -439,10 +473,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     Expanded(
                                       child: Container(
                                         height: 1,
-                                        color:
-                                        const Color(
-                                          0xFFD7D0C9,
-                                        ),
+                                        color: const Color(0xFFD7D0C9),
                                       ),
                                     ),
                                   ],
@@ -464,23 +495,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: OutlinedButton(
                                     onPressed: () {},
 
-                                    style:
-                                    OutlinedButton.styleFrom(
-                                      backgroundColor:
-                                      Colors.white,
+                                    style: OutlinedButton.styleFrom(
+                                      backgroundColor: Colors.white,
 
-                                      side:
-                                      const BorderSide(
-                                        color:
-                                        Color(0xFFD0D0D0),
+                                      side: const BorderSide(
+                                        color: Color(0xFFD0D0D0),
 
                                         width: 1.2,
                                       ),
 
-                                      shape:
-                                      RoundedRectangleBorder(
-                                        borderRadius:
-                                        BorderRadius.circular(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
                                           35,
                                         ),
                                       ),
@@ -506,14 +531,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                           'Google المتابعة باستخدام',
 
                                           style: TextStyle(
-                                            color:
-                                            darkColor,
+                                            color: darkColor,
 
-                                            fontSize:
-                                            width * 0.039,
+                                            fontSize: width * 0.039,
 
-                                            fontWeight:
-                                            FontWeight.w500,
+                                            fontWeight: FontWeight.w500,
                                           ),
                                         ),
                                       ],
@@ -537,8 +559,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                             child: Center(
                               child: Container(
-                                decoration:
-                                const BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
 
